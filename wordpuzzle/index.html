@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0, maximum-scale=1"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+	<link rel="stylesheet" href="reset.css">
+</head>
+<body>
+
+<div class="container">
+
+	<div>
+		<img src="settings.png" class="icon" id="icon" onclick="toggle()">
+	</div>
+	<div class="setting" id="setting" >
+		<div class="container">
+		<!-- <div>
+			<label for="TimeDelay">مدت زمان</label>
+			<input type="text">
+			<label for="TimeDelay">ثانیه</label>
+		</div> -->
+			<p class="title">کلمات را در کادر زیر وارد کنید</p>
+			<textarea id="txt"></textarea>
+		</div>
+	</div>
+	<div >
+		<div class="btn">
+			<button onclick="start()" id="btn_start">شروع</button>
+			<button onclick="resume()" id="resum_btn">ادامه</button>
+		</div>
+	</div>
+			<div class="card" id="card">
+				<span id="card_letter"></span>
+        <p id="card_answer"></p>
+				<p id="card_word"></p>
+				</div>	
+			</div>
+
+	</div>
+
+</div>
+	<footer class="footer">کلیه حقوق و امتیازات این وبسایت متعلق به مدرسه شهید نادر مهدوی بوده</footer>
+	<script src="src.js"></script>
+</body>
+</html>

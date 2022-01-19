@@ -1,0 +1,239 @@
+@font-face {
+  font-family: yekan;
+  src: url(yekan-regular.ttf);
+}
+
+* {
+  font-family: yekan;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  /* overflow-x: hidden; */
+  background-color: #fff6ef;
+}
+
+.container {
+  margin: auto;
+  width: 95%;
+  max-width: 1297px;
+}
+
+#card {
+  font-family: yekan;
+  font-size: 300px;
+  font-weight: 400;
+  margin: 20px auto 20px auto;
+  text-align: center;
+}
+
+#card_img{
+  max-width: 500px;
+}
+
+#card_answer{
+
+  font-size: .7em;
+
+}
+
+/* .card * {
+  max-width: 500px;
+} */
+
+.btn {
+  margin: auto;
+  width: fit-content;
+}
+
+textarea {
+  width: 100%;
+}
+
+button {
+  align-items: center;
+  appearance: none;
+  background-image: radial-gradient(
+    100% 100% at 100% 0,
+    #5adaff 0,
+    #5468ff 100%
+  );
+  border: 0;
+  border-radius: 6px;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, rgba(58, 65, 111, 0.5) 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: "JetBrains Mono", monospace;
+  height: 48px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 16px;
+  padding-right: 16px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow 0.15s, transform 0.15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow, transform;
+  font-size: 18px;
+}
+
+.button-29:focus {
+  box-shadow: #3c4fe0 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+}
+
+.button-29:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px,
+    rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #3c4fe0 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.button-29:active {
+  box-shadow: #3c4fe0 0 3px 7px inset;
+  transform: translateY(2px);
+}
+
+.footer {
+  position: absolute;
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+  padding: 10px 0px 10px 0;
+  background-color: #e2cdbd;
+}
+
+.icon {
+  width: 32px;
+  height: 32px;
+  margin: 10px 0 0 0;
+}
+
+#txt {
+  margin: 10px 0 10px 0;
+}
+
+.title {
+  font-family: yekan;
+  font-size: 20px;
+  margin: 10px 0 10px 0;
+}
+.rotate {
+  -webkit-transform: rotate(66deg);
+  -moz-transform: rotate(66deg);
+  -ms-transform: rotate(66deg);
+  -o-transform: rotate(66deg);
+  transform: rotate(66deg);
+  -webkit-transition: all 0.5s ease-in-out;
+  -moz-transition: all 0.5s ease-in-out;
+  -o-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+@media only screen and (max-width: 1200px) {
+  body {
+  }
+  .container {
+  }
+  button {
+    width: 100%;
+  }
+  #card_img {
+  }
+
+  #card_letter {
+  }
+  
+  #card_answer{
+    font-size: .6em;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+  }
+  .container {
+  }
+  button {
+    width: 100%;
+  }
+  #card_img {
+  }
+
+  #card_letter {
+  }
+
+  #card_answer{
+    font-size: .5em;
+  }
+}
+
+@media only screen and (max-width: 810px) {
+  body {
+  }
+  .container {
+  }
+  button {
+    width: 100%;
+  }
+  #card_img {
+  }
+
+  #card_letter {
+  }
+
+  #card_answer{
+   font-size: .4em; 
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+  }
+  .container {
+  }
+  button {
+    width: 100%;
+  }
+  #card_img {
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+  }
+  .container {
+  }
+  button {
+    width: 100%;
+  }
+  #card_img {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  body {
+  }
+  .container {
+  }
+  button {
+    width: 100%;
+  }
+  #card_img {
+    width: 300px;
+  }
+}
