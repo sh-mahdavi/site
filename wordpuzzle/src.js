@@ -3,20 +3,23 @@ let cardAnswer = document.getElementById("card_answer")
 let words
 let icon
 let letters
+let lettersTemp
 let cardLetter
 let letterShaperIsFilled = false
 // let setting = document.getElementById("setting")
 let isHide = false
+let isChecked = true
 
 function start(){
 
 	let i = 0
 	let j = 0
 	let index = 0
+	let innerIndex = 0
 	let txt = document.getElementById('txt').value; 
 	words = txt.split("\n")
 	letters = txt.split("") 
-	
+		
 	letterShaper = []
 	let card = document.getElementById("card")
 	cardLetter = document.getElementById("card_letter")
@@ -26,31 +29,29 @@ function start(){
 	var innerInterval
 	clearAnswer()
 
+			lettersTemp = letters
+
+			if(isChecked){
+				lettersTemp.forEach(element => {
+
+				if(letters[innerIndex] != " "){
+							if(innerIndex == 0){
+								letters[innerIndex] = letterResahper(letters[innerIndex], "init")
+								}
+							if(innerIndex == letters.length - 1){
+								letters[innerIndex] = letterResahper(letters[innerIndex], "final")
+							}
+							else{
+								letters[innerIndex] = letterResahper(letters[innerIndex], "mid")
+							}
+							}
+							}
+				});}
+
 	const myin = setInterval(
 		function setWords(){
-			
-			if(!letterShaperIsFilled){
-			let innerIndex = 0
-				if(letters[innerIndex] != " "){
-						if(arr[0] == charHolder){
-							if(innerIndex == 0){
-								if(arr[2] != null){
-									letterShaper.push(arr[2])
-								}
-							}
-							if(innerIndex == letters.length - 1)
-								letterShaper.push(arr[4])
-							} 
-							else{
-								letterShaper.push(arr[3])
-							}
-						innerIndex = innerIndex + 1
-					})
-				}
 
-				letterShaperIsFilled = !letterShaperIsFilled
-			}
-           if(!isHide){
+          if(!isHide){
 
                 hide(settingChilds)
                 isHide = !isHide
@@ -91,15 +92,10 @@ function start(){
 				},2000);
 
 			}
-
 		
-		}, 3000
-		);
-
+		}, 3000);
 	}
 
-	
-// }
 
 function resume(){
 	console.log("resume")
@@ -159,17 +155,23 @@ function clearAnswer(word = ""){
 
 function letterResahper(letter, poistion="iso"){
 	let index = 0
-	for(let i=0;i<letters.length - 1; i++){
-			if(letter == charsMap[i][0]){
+	console.log(letter)
+	letter = String(letter)
+	for(let i=0;i< charsMap.length - 1; i++){
+			console.log(letter.charCodeAt(0))
+			console.log(charsMap[i][0])
+			console.log("\n")
+			if(letter.charCodeAt(0) == charsMap[i][0]){
 				if(poistion = "init")
-					return a[2]
-				if(poistion = "med")
-					returna[3]
+					return charsMap[i][2]
+				if(poistion = "mid")
+                    return charsMap[i][3]
 				if(poistion = "final")
-					return[4]
+					return charsMap[i][4]
 				return "پیدا نشد"
 			}
 		}
+	}
 
 var charsMap = [
 			/* code,isolated,initial, medial, final */
