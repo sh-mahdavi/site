@@ -31,22 +31,38 @@ function start(){
 
 			lettersTemp = letters
 
+			console.log("array of letters: " + letters)
+			console.log("array of letterTemp: " + lettersTemp)
+
 			if(isChecked){
 				lettersTemp.forEach(element => {
 
-				if(letters[innerIndex] != " "){
+				if(element != " "  & element!= "\n"){
 							if(innerIndex == 0){
-								letters[innerIndex] = letterResahper(letters[innerIndex], "init")
+								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "init")
+								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
+								innerIndex = innerIndex + 1
 								}
-							if(innerIndex == letters.length - 1){
-								letters[innerIndex] = letterResahper(letters[innerIndex], "final")
+							else if(innerIndex == letters.length - 1){
+								letterReshpeCode = letterResahper(letters[innerIndex], "final")
+								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
+								innerIndex = innerIndex + 1
 							}
 							else{
-								letters[innerIndex] = letterResahper(letters[innerIndex], "mid")
+								letterResahperCode = letterResahper(letters[innerIndex], "mid")
+								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
+								innerIndex = innerIndex + 1
 							}
 							}
+							else{
+								innerIndex = innerIndex + 1
 							}
-				});}
+							}
+			);
+			}
+			console.log("letters is:" + letters)
+			console.log("letters is:" + lettersTemp)
+			console.log
 
 	const myin = setInterval(
 		function setWords(){
@@ -155,12 +171,9 @@ function clearAnswer(word = ""){
 
 function letterResahper(letter, poistion="iso"){
 	let index = 0
-	console.log(letter)
 	letter = String(letter)
+	console.log(letter + " is here and position is " + poistion)
 	for(let i=0;i< charsMap.length - 1; i++){
-			console.log(letter.charCodeAt(0))
-			console.log(charsMap[i][0])
-			console.log("\n")
 			if(letter.charCodeAt(0) == charsMap[i][0]){
 				if(poistion = "init")
 					return charsMap[i][2]
