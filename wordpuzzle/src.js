@@ -6,6 +6,7 @@ let letters
 let lettersTemp
 let cardLetter
 let letterShaperIsFilled = false
+let letterReshpeCode
 // let setting = document.getElementById("setting")
 let isHide = false
 let isChecked = true
@@ -40,16 +41,19 @@ function start(){
 				if(element != " "  & element!= "\n"){
 							if(innerIndex == 0){
 								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "init")
+								console.log(String.fromCharCode(letterReshpeCode))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 								}
 							else if(innerIndex == letters.length - 1){
-								letterReshpeCode = letterResahper(letters[innerIndex], "final")
+								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "final")
+								console.log(String.fromCharCode(letterReshpeCode))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 							}
 							else{
-								letterResahperCode = letterResahper(letters[innerIndex], "mid")
+								letterResahperCode = letterResahper(lettersTemp[innerIndex], "mid")
+								console.log(String.fromCharCode(letterReshpeCode))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 							}
@@ -62,7 +66,6 @@ function start(){
 			}
 			console.log("letters is:" + letters)
 			console.log("letters is:" + lettersTemp)
-			console.log
 
 	const myin = setInterval(
 		function setWords(){
@@ -175,12 +178,16 @@ function letterResahper(letter, poistion="iso"){
 	console.log(letter + " is here and position is " + poistion)
 	for(let i=0;i< charsMap.length - 1; i++){
 			if(letter.charCodeAt(0) == charsMap[i][0]){
-				if(poistion = "init")
+				console.log("#letterReshaper: letter is: " + letter + "charsMap is: " + String.fromCharCode(charsMap[i][0]))
+				if(poistion = "init"){
 					return charsMap[i][2]
-				if(poistion = "mid")
+				}
+				if(poistion = "mid"){
                     return charsMap[i][3]
-				if(poistion = "final")
+				}
+				if(poistion = "final"){
 					return charsMap[i][4]
+				}
 				return "پیدا نشد"
 			}
 		}
@@ -194,7 +201,7 @@ var charsMap = [
 			[ 0x0624, 0xFE85, null  , null  , 0xFE86 ], /* WAW_HAMZA */
 			[ 0x0625, 0xFE87, null  , null  , 0xFE88 ], /* ALEF_HAMZA_BELOW */
 			[ 0x0626, 0xFE89, 0xFE8B, 0xFE8C, 0xFE8A ], /* YEH_HAMZA */
-			[ 0x0627, 0xFE8D, null  , null  , 0xFE8E ], /* ALEF */
+			[ 0x0627, 0xFE8D, 0xFE8E , 0xFE8E  , 0xFE8E ], /* ALEF */
 			[ 0x0628, 0xFE8F, 0xFE91, 0xFE92, 0xFE90 ], /* BEH */
 			[ 0x0629, 0xFE93, null  , null  , 0xFE94 ], /* TEH_MARBUTA */
 			[ 0x062A, 0xFE95, 0xFE97, 0xFE98, 0xFE96 ], /* TEH */
@@ -202,11 +209,11 @@ var charsMap = [
 			[ 0x062C, 0xFE9D, 0xFE9F, 0xFEA0, 0xFE9E ], /* JEEM */
 			[ 0x062D, 0xFEA1, 0xFEA3, 0xFEA4, 0xFEA2 ], /* HAH */
 			[ 0x062E, 0xFEA5, 0xFEA7, 0xFEA8, 0xFEA6 ], /* KHAH */
-			[ 0x062F, 0xFEA9, null  , null  , 0xFEAA ], /* DAL */
-			[ 0x0630, 0xFEAB, null  , null  , 0xFEAC ], /* THAL */
-			[ 0x0631, 0xFEAD, null  , null  , 0xFEAE ], /* REH */
+			[ 0x062F, 0xFEA9, 0xFEA9  , 0xFEA9 , 0xFEAA ], /* DAL */
+			[ 0x0630, 0xFEAB, 0xFEAB  , 0xFEAB , 0xFEAC ], /* THAL */
+			[ 0x0631, 0xFEAD, 0xFEAD  , 0xFEAD , 0xFEAE ], /* REH */
 			[ 0x0632, 0xFEAF, null  , null  , 0xFEB0 ], /* ZAIN */
-            [ 0x0698, 0xFB8A, null  , null  , 0xFB8B ], /* ZHEH */
+            [ 0x0698, 0xFB8A,  0xFB8A  , 0xFB8A    , 0xFB8B ], /* ZHEH */
 			[ 0x0633, 0xFEB1, 0xFEB3, 0xFEB4, 0xFEB2 ], /* SEEN */
 			[ 0x0634, 0xFEB5, 0xFEB7, 0xFEB8, 0xFEB6 ], /* SHEEN */
 			[ 0x0635, 0xFEB9, 0xFEBB, 0xFEBC, 0xFEBA ], /* SAD */
@@ -223,7 +230,7 @@ var charsMap = [
 			[ 0x0645, 0xFEE1, 0xFEE3, 0xFEE4, 0xFEE2 ], /* MEEM */
 			[ 0x0646, 0xFEE5, 0xFEE7, 0xFEE8, 0xFEE6 ], /* NOON */
 			[ 0x0647, 0xFEE9, 0xFEEB, 0xFEEC, 0xFEEA ], /* HEH */
-			[ 0x0648, 0xFEED, null  , null  , 0xFEEE ], /* WAW */
+			[ 0x0648, 0xFEED,  0xFEED  , 0xFEED   , 0xFEEE ], /* WAW */
 			[ 0x0649, 0xFEEF, null  , null  , 0xFEF0 ], /* ALEF_MAKSURA */
 			[ 0x064A, 0xFEF1, 0xFEF3, 0xFEF4, 0xFEF2 ], /* YEH Arabic */
             [ 0x06CC, 0xFBFC, 0xFBFE, 0xFBFF, 0xFBFD ], /* YEH Farsi */
