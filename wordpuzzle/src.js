@@ -41,19 +41,22 @@ function start(){
 				if(element != " "  & element!= "\n"){
 							if(innerIndex == 0){
 								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "init")
+								console.log("letter reshape code is: " + letterReshpeCode)
 								console.log(String.fromCharCode(letterReshpeCode))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 								}
 							else if(innerIndex == letters.length - 1){
 								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "final")
+								console.log("letter reshape code is: " + letterReshpeCode)
 								console.log(String.fromCharCode(letterReshpeCode))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 							}
 							else{
 								letterResahperCode = letterResahper(lettersTemp[innerIndex], "mid")
-								console.log(String.fromCharCode(letterReshpeCode))
+								console.log("letter reshape code is: " + letterReshpeCode)
+								console.log("String.fromCharCode(letterReshpeCode"))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 							}
@@ -175,20 +178,26 @@ function clearAnswer(word = ""){
 function letterResahper(letter, poistion="iso"){
 	let index = 0
 	letter = String(letter)
-	console.log(letter + " is here and position is " + poistion)
-	for(let i=0;i< charsMap.length - 1; i++){
+	console.log(letter+ " " + letter.charCodeAt(0) + " is here and position is " + poistion)
+	 for(let i=0;i< charsMap.length - 1; i++){
 			if(letter.charCodeAt(0) == charsMap[i][0]){
 				console.log("#letterReshaper: letter is: " + letter + "charsMap is: " + String.fromCharCode(charsMap[i][0]))
 				if(poistion = "init"){
+					console.log("for letter " + letter + "reuturn" + charsMap[i][2])
 					return charsMap[i][2]
 				}
 				if(poistion = "mid"){
+					console.log("for letter " + letter + "reuturn" + charsMap[i][3])
                     return charsMap[i][3]
 				}
 				if(poistion = "final"){
+					console.log("for letter " + letter + "reuturn" + charsMap[i][4])
 					return charsMap[i][4]
 				}
+				else{
+					console.log("for letter " + letter + "reuturn" + charsMap[i][4])
 				return "پیدا نشد"
+				}
 			}
 		}
 	}
