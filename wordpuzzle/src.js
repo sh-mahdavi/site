@@ -7,6 +7,7 @@ let lettersTemp
 let cardLetter
 let letterShaperIsFilled = false
 let letterReshpeCode
+let prevLetter
 // let setting = document.getElementById("setting")
 let isHide = false
 let isChecked = true
@@ -30,7 +31,7 @@ function start(){
 	var innerInterval
 	clearAnswer()
 
-			lettersTemp = letters
+			lettersTemp = letters.slice()
 
 			console.log("array of letters: " + letters)
 			console.log("array of letterTemp: " + lettersTemp)
@@ -39,24 +40,36 @@ function start(){
 				lettersTemp.forEach(element => {
 
 				if(element != " "  & element!= "\n"){
-							if(innerIndex == 0){
+							if(innerIndex == 0 || lettersTemp[innerIndex-1] == "\n"){
 								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "init")
 								console.log("letter reshape code is: " + letterReshpeCode)
 								console.log(String.fromCharCode(letterReshpeCode))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 								}
-							else if(innerIndex == letters.length - 1){
-								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "final")
-								console.log("letter reshape code is: " + letterReshpeCode)
-								console.log(String.fromCharCode(letterReshpeCode))
-								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
-								innerIndex = innerIndex + 1
-							}
+
+							else if(lettersTemp[innerIndex+1]=="\n" || innerIndex == lettersTemp.length - 1){
+                                prevLetter = lettersTemp[innerIndex - 1]
+                                console.info("prev letter from heh: " + prevLetter.charCodeAt(0))
+                                if(element.charCodeAt(0) == 0x0647 && hehMap.includes(prevLetter.charCodeAt(0))){
+                                         console.log("heh is active")
+                                         console.log(lettersTemp[innerIndex - 1].charCodeAt(0))
+                                         letters[innerIndex] = element
+                                         innerIndex = innerIndex + 1
+                                    }
+
+                                 else{
+								    letterReshpeCode = letterResahper(lettersTemp[innerIndex], "final")
+								    console.warn("letter reshape code is: " + letterReshpeCode)
+								    console.log(String.fromCharCode(letterReshpeCode))
+								    letters[innerIndex] = String.fromCharCode(letterReshpeCode)
+								    innerIndex = innerIndex + 1
+                                }
+                               }
+
 							else{
-								letterResahperCode = letterResahper(lettersTemp[innerIndex], "mid")
+								letterReshpeCode = letterResahper(lettersTemp[innerIndex], "mid")
 								console.log("letter reshape code is: " + letterReshpeCode)
-								console.log("String.fromCharCode(letterReshpeCode"))
 								letters[innerIndex] = String.fromCharCode(letterReshpeCode)
 								innerIndex = innerIndex + 1
 							}
@@ -68,7 +81,7 @@ function start(){
 			);
 			}
 			console.log("letters is:" + letters)
-			console.log("letters is:" + lettersTemp)
+			console.log("lettersTemp is:" + lettersTemp)
 
 	const myin = setInterval(
 		function setWords(){
@@ -179,38 +192,38 @@ function letterResahper(letter, poistion="iso"){
 	let index = 0
 	letter = String(letter)
 	console.log(letter+ " " + letter.charCodeAt(0) + " is here and position is " + poistion)
-	 for(let i=0;i< charsMap.length - 1; i++){
+	 for(let i=0;i<= charsMap.length - 1; i++){
+         
 			if(letter.charCodeAt(0) == charsMap[i][0]){
 				console.log("#letterReshaper: letter is: " + letter + "charsMap is: " + String.fromCharCode(charsMap[i][0]))
-				if(poistion = "init"){
-					console.log("for letter " + letter + "reuturn" + charsMap[i][2])
+				if(poistion == "init"){ 
 					return charsMap[i][2]
+                } 
+				if(poistion == "mid"){
+					console.log("for letter " + letter + "reuturn: " + charsMap[i][1])
+                    return charsMap[i][2]
 				}
-				if(poistion = "mid"){
-					console.log("for letter " + letter + "reuturn" + charsMap[i][3])
-                    return charsMap[i][3]
+				if(poistion == "final"){
+					console.log("for letter " + letter + "reuturn: " + charsMap[i][4])
+        		return charsMap[i][4]
 				}
-				if(poistion = "final"){
-					console.log("for letter " + letter + "reuturn" + charsMap[i][4])
-					return charsMap[i][4]
-				}
-				else{
-					console.log("for letter " + letter + "reuturn" + charsMap[i][4])
-				return "پیدا نشد"
-				}
+				
 			}
+
 		}
+
+            return "not found"
 	}
 
 var charsMap = [
 			/* code,isolated,initial, medial, final */
 			[ 0x0621, 0xFE80, null  , null  , null   ], /* HAMZA */
-			[ 0x0622, 0xFE81, null  , null  , 0xFE82 ], /* ALEF_MADDA */
+			[ 0x0622, 0xFE81, 0x0622  , null  , 0xFE82 ], /* ALEF_MADDA */
 			[ 0x0623, 0xFE83, null  , null  , 0xFE84 ], /* ALEF_HAMZA_ABOVE */
 			[ 0x0624, 0xFE85, null  , null  , 0xFE86 ], /* WAW_HAMZA */
 			[ 0x0625, 0xFE87, null  , null  , 0xFE88 ], /* ALEF_HAMZA_BELOW */
 			[ 0x0626, 0xFE89, 0xFE8B, 0xFE8C, 0xFE8A ], /* YEH_HAMZA */
-			[ 0x0627, 0xFE8D, 0xFE8E , 0xFE8E  , 0xFE8E ], /* ALEF */
+			[ 0x0627, 0xFE8D, 0xFE8D , 0xFE8E  , 0xFE8D ], /* ALEF */
 			[ 0x0628, 0xFE8F, 0xFE91, 0xFE92, 0xFE90 ], /* BEH */
 			[ 0x0629, 0xFE93, null  , null  , 0xFE94 ], /* TEH_MARBUTA */
 			[ 0x062A, 0xFE95, 0xFE97, 0xFE98, 0xFE96 ], /* TEH */
@@ -235,7 +248,7 @@ var charsMap = [
 			[ 0x0641, 0xFED1, 0xFED3, 0xFED4, 0xFED2 ], /* FEH */
 			[ 0x0642, 0xFED5, 0xFED7, 0xFED8, 0xFED6 ], /* QAF */
 			[ 0x0643, 0xFED9, 0xFEDB, 0xFEDC, 0xFEDA ], /* KAF */
-			[ 0x0644, 0xFEDD, 0xFEDF, 0xFEE0, 0xFEDE ], /* LAM */
+			[ 0x0644, 0xFEDD, 0xFEDF, 0xFEE0, 0xFEDE  ], /* LAM */
 			[ 0x0645, 0xFEE1, 0xFEE3, 0xFEE4, 0xFEE2 ], /* MEEM */
 			[ 0x0646, 0xFEE5, 0xFEE7, 0xFEE8, 0xFEE6 ], /* NOON */
 			[ 0x0647, 0xFEE9, 0xFEEB, 0xFEEC, 0xFEEA ], /* HEH */
@@ -249,3 +262,5 @@ var charsMap = [
             [ 0x06A9, 0xFB8E, 0xFB90, 0xFB91, 0xFB8F ],
 
 		]
+
+var hehMap = [0x0627, 0x062F, 0x0631, 0x0698, 0x0632, 0x0648]
