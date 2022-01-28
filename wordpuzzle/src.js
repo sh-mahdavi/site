@@ -8,9 +8,11 @@ let cardLetter
 let letterShaperIsFilled = false
 let letterReshpeCode
 let prevLetter
+let isChecked=false
 // let setting = document.getElementById("setting")
 let isHide = false
-let isChecked = true
+
+
 
 function start(){
 
@@ -80,6 +82,7 @@ function start(){
 							}
 			);
 			}
+            letters = mergeSigns(letters)
 			console.log("letters is:" + letters)
 			console.log("lettersTemp is:" + lettersTemp)
 
@@ -131,6 +134,30 @@ function start(){
 		}, 3000);
 	}
 
+
+function mergeSigns(arr){
+    let index = 0;
+    let lettersArray = []
+    console.log(arr)
+        arr.forEach(element =>{
+            console.log(index)
+            mindex = index - 1 
+            mmindex = index - 2 
+            if(element.charCodeAt(0) == 0x651){
+                console.log("elment is tasdid: " + element + " added to index: " + mindex + "and prev : " + mmindex )
+                lettersArray[(lettersArray.length - 1)] = arr[index - 1] + arr[index]  
+                index++
+            }
+            else{
+                console.log("elment is : " + element + index)
+               lettersArray.push(element) 
+                console.log("array Is : " + lettersArray)
+                index++
+            }
+        });
+        console.log(lettersArray)
+        return lettersArray
+}
 
 function resume(){
 	console.log("resume")
@@ -205,7 +232,7 @@ function letterResahper(letter, poistion="iso"){
 				}
 				if(poistion == "final"){
 					console.log("for letter " + letter + "reuturn: " + charsMap[i][4])
-        		return charsMap[i][4]
+        		return charsMap[i][1]
 				}
 				
 			}
@@ -260,6 +287,7 @@ var charsMap = [
             [ 0x067E, 0xFB56, 0xFB58, 0xFB59, 0xFB57 ],
             [ 0x06AF, 0xFB92, 0xFB94, 0xFB95, 0xFB93 ],
             [ 0x06A9, 0xFB8E, 0xFB90, 0xFB91, 0xFB8F ],
+            [0x651, 0x651, 0x651, 0x651, 0x651]
 
 		]
 

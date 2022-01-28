@@ -32,14 +32,16 @@ body {
   text-align: center;
 }
 
-#card_img{
+#card_img {
   max-width: 500px;
 }
 
-#card_answer{
+#card_answer {
+  font-size: 0.7em;
+}
 
-  font-size: .7em;
-
+#card_letter--s {
+  display: block;
 }
 
 /* .card * {
@@ -156,9 +158,9 @@ button {
 
   #card_letter {
   }
-  
-  #card_answer{
-    font-size: .6em;
+
+  #card_answer {
+    font-size: 0.6em;
   }
 }
 
@@ -176,8 +178,8 @@ button {
   #card_letter {
   }
 
-  #card_answer{
-    font-size: .5em;
+  #card_answer {
+    font-size: 0.5em;
   }
 }
 
@@ -195,8 +197,8 @@ button {
   #card_letter {
   }
 
-  #card_answer{
-   font-size: .4em; 
+  #card_answer {
+    font-size: 0.4em;
   }
 }
 
