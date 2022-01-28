@@ -11,7 +11,7 @@ let prevLetter
 let isChecked=false
 // let setting = document.getElementById("setting")
 let isHide = false
-
+let hardModeCheckBox = false
 
 
 function start(){
@@ -27,6 +27,7 @@ function start(){
 	letterShaper = []
 	let card = document.getElementById("card")
 	cardLetter = document.getElementById("card_letter")
+    hardModeCheckBox = document.getElementById("setting_checkbox")
 	console.log(words)
 	isPaused = false
 	isActive = false
@@ -38,7 +39,7 @@ function start(){
 			console.log("array of letters: " + letters)
 			console.log("array of letterTemp: " + lettersTemp)
 
-			if(isChecked){
+			if(hardModeCheckBox.checked == true){
 				lettersTemp.forEach(element => {
 
 				if(element != " "  & element!= "\n"){
