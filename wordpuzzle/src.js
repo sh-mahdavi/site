@@ -12,7 +12,11 @@ let isChecked=false
 // let setting = document.getElementById("setting")
 let isHide = false
 let hardModeCheckBox = false
+let txtValue
 
+let txtStorage = ['ثرّیا',
+'کلام',
+]
 
 function start(){
 
@@ -20,9 +24,11 @@ function start(){
 	let j = 0
 	let index = 0
 	let innerIndex = 0
-	let txt = document.getElementById('txt').value; 
-	words = txt.split("\n")
-	letters = txt.split("") 
+	let txt = document.getElementById('txt')
+	// txt.value = txtStorage[0]
+	txtValue = txt.value	
+	words = txtValue.split("\n")
+	letters = txtValue.split("") 
 		
 	letterShaper = []
 	let card = document.getElementById("card")
@@ -84,6 +90,7 @@ function start(){
 			);
 			}
             letters = mergeSigns(letters)
+			letters =mergE(letters)
 			console.log("letters is:" + letters)
 			console.log("lettersTemp is:" + lettersTemp)
 
@@ -135,6 +142,27 @@ function start(){
 		}, 3000);
 	}
 
+
+function mergE(arr){
+    let index = 0;
+	let lettersArray = []
+	prevLetter = arr[index - 1]
+	prePrevLetter= arr[index - 2]
+	arr.forEach(element=>{
+		if((element == 0x06CC ||  element ==0x064A) && (prevLetter.charCodeAt(0) == 0x0627 && prePrevLetter.charCodeAt(0) == 0x0020)){
+				console.log("E is here")
+			    lettersArray[(lettersArray.length - 1)] = arr[index - 1] + arr[index]  
+                index++
+
+		}
+		else{
+			 lettersArray.push(element) 
+             console.log("array Is : " + lettersArray)
+              index++
+		}
+	})
+	return lettersArray
+}
 
 function mergeSigns(arr){
     let index = 0;
@@ -262,7 +290,7 @@ var charsMap = [
 			[ 0x062F, 0xFEA9, 0xFEA9  , 0xFEA9 , 0xFEAA ], /* DAL */
 			[ 0x0630, 0xFEAB, 0xFEAB  , 0xFEAB , 0xFEAC ], /* THAL */
 			[ 0x0631, 0xFEAD, 0xFEAD  , 0xFEAD , 0xFEAE ], /* REH */
-			[ 0x0632, 0xFEAF, null  , null  , 0xFEB0 ], /* ZAIN */
+			[ 0x0632, 0xFEAF, 0xFEAF, 0xFEAF, 0xFEB0 ], /* ZAIN */
             [ 0x0698, 0xFB8A,  0xFB8A  , 0xFB8A    , 0xFB8B ], /* ZHEH */
 			[ 0x0633, 0xFEB1, 0xFEB3, 0xFEB4, 0xFEB2 ], /* SEEN */
 			[ 0x0634, 0xFEB5, 0xFEB7, 0xFEB8, 0xFEB6 ], /* SHEEN */
@@ -293,3 +321,32 @@ var charsMap = [
 		]
 
 var hehMap = [0x0627, 0x062F, 0x0631, 0x0698, 0x0632, 0x0648]
+
+
+
+// let x = `{
+//   "ص": [
+//     "صدا",
+//     "صدف",
+//     "صورت",
+//     "صاف",
+//     "صابون",
+//     "صبح",
+//     "صبحانه",
+//     "صف",
+//     "صندلی",
+//     "صندوق",
+//     "اصغر",
+//     "معصومه",
+//     "فصل",
+//     "مخصوص"
+//   ]
+// }`
+
+// var box = documnent.getElementById("box")
+// x = JSON.parse(x)
+// function press(){
+// let arr = []
+// for(const key in x){
+// console.log(key)
+// }}
