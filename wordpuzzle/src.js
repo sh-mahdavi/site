@@ -14,9 +14,21 @@ let isHide = false
 let hardModeCheckBox = false
 let txtValue
 let anyOflettersCheckBoxesIsTrue = true
-let txtStorage = ['ثرّیا',
-'کلام',
-]
+let wordsObj
+let lettersCheckBoxes
+
+function showLetters(){
+	console.log(this.id)
+}
+
+lettersCheckBoxes = document.getElementsByClassName("letter_checkbox")
+console.log(typeof(lettersCheckBoxes))
+// for(const key in lettersCheckBoxes){
+// 	lettersCheckBoxes[key].addEventListener('click', showLetters)
+// }
+
+for (var i = 0; i < lettersCheckBoxes.length; i++) {
+}
 
 function start(){
 
@@ -25,12 +37,26 @@ function start(){
 	let index = 0
 	let innerIndex = 0
 	let txt = document.getElementById('txt')
-	lettersCheckBoxes = document.getElementById("letter_checkbox")	
-	let wordsObj = JSON.parse(wordStorage)
+	lettersCheckBoxes = document.getElementsByClassName("letter_checkbox")	
+	console.log(typeof(lettersCheckBoxes))
+	for(const key in lettersCheckBoxes){
+		if(lettersCheckBoxes[key].checked == true){
+				switch (lettersCheckBoxes[key].id) {
+					case "preschool":
+						txt.value = wordsObj[key].join("\n")
+						break;
+				
+					default:
+						break;
+				}
+		}
+	}
+	// lettersCheckBoxes.forEach(el=>{
+	// 	console.log(el)
+	// })
 	if(anyOflettersCheckBoxesIsTrue){
 	for(let key in wordsObj){
 		console.log(wordsObj[key])		
-		txt.value = wordsObj[key].join("\n")
 	
 	}
 }
@@ -253,6 +279,8 @@ function clearAnswer(word = ""){
 	cardAnswer.innerHTML = word
 }
 
+
+
 function letterResahper(letter, poistion="iso"){
 	let index = 0
 	letter = String(letter)
@@ -334,8 +362,9 @@ var charsMap = [
 var hehMap = [0x0627, 0x062F, 0x0631, 0x0698, 0x0632, 0x0648]
 
 
-
-let wordStorage = `{
+let preSchool
+let wordStorageEle0
+let wordStorageEle1 = `{
   "ص": [
     "صدا",
     "صدف",
@@ -353,4 +382,9 @@ let wordStorage = `{
     "مخصوص"
   ]
 }`
+
+let wordStorageEle2
+let wordStorageEle3
+let wordStorageEle4
+
 
