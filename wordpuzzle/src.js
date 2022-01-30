@@ -13,7 +13,7 @@ let isChecked=false
 let isHide = false
 let hardModeCheckBox = false
 let txtValue
-
+let anyOflettersCheckBoxesIsTrue = true
 let txtStorage = ['ثرّیا',
 'کلام',
 ]
@@ -25,7 +25,16 @@ function start(){
 	let index = 0
 	let innerIndex = 0
 	let txt = document.getElementById('txt')
-	// txt.value = txtStorage[0]
+	lettersCheckBoxes = document.getElementById("letter_checkbox")	
+	let wordsObj = JSON.parse(wordStorage)
+	if(anyOflettersCheckBoxesIsTrue){
+	for(let key in wordsObj){
+		console.log(wordsObj[key])		
+		txt.value = wordsObj[key].join("\n")
+	
+	}
+}
+
 	txtValue = txt.value	
 	words = txtValue.split("\n")
 	letters = txtValue.split("") 
@@ -33,13 +42,13 @@ function start(){
 	letterShaper = []
 	let card = document.getElementById("card")
 	cardLetter = document.getElementById("card_letter")
-    hardModeCheckBox = document.getElementById("setting_checkbox")
+    hardModeCheckBox = document.getElementById("hardmodecheckbox")
 	console.log(words)
 	isPaused = false
 	isActive = false
 	var innerInterval
 	clearAnswer()
-
+	
 			lettersTemp = letters.slice()
 
 			console.log("array of letters: " + letters)
@@ -260,6 +269,8 @@ function letterResahper(letter, poistion="iso"){
                     return charsMap[i][2]
 				}
 				if(poistion == "final"){
+					if(letter.charCodeAt(0)==0x0647)
+						return charsMap[i][4]
 					console.log("for letter " + letter + "reuturn: " + charsMap[i][4])
         		return charsMap[i][1]
 				}
@@ -324,29 +335,22 @@ var hehMap = [0x0627, 0x062F, 0x0631, 0x0698, 0x0632, 0x0648]
 
 
 
-// let x = `{
-//   "ص": [
-//     "صدا",
-//     "صدف",
-//     "صورت",
-//     "صاف",
-//     "صابون",
-//     "صبح",
-//     "صبحانه",
-//     "صف",
-//     "صندلی",
-//     "صندوق",
-//     "اصغر",
-//     "معصومه",
-//     "فصل",
-//     "مخصوص"
-//   ]
-// }`
+let wordStorage = `{
+  "ص": [
+    "صدا",
+    "صدف",
+    "صورت",
+    "صاف",
+    "صابون",
+    "صبح",
+    "صبحانه",
+    "صف",
+    "صندلی",
+    "صندوق",
+    "اصغر",
+    "معصومه",
+    "فصل",
+    "مخصوص"
+  ]
+}`
 
-// var box = documnent.getElementById("box")
-// x = JSON.parse(x)
-// function press(){
-// let arr = []
-// for(const key in x){
-// console.log(key)
-// }}

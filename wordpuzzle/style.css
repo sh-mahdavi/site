@@ -18,6 +18,10 @@ body {
   background-color: #fff6ef;
 }
 
+input{
+  display: block;
+}
+
 .container {
   margin: auto;
   width: 95%;
