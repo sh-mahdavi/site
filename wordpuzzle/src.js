@@ -1,5 +1,6 @@
 let	settingChilds =  setting.getElementsByClassName("container")[0]
 let cardAnswer = document.getElementById("card_answer")
+let	txt = document.getElementById('txt')
 let words
 let icon
 let letters
@@ -17,17 +18,35 @@ let anyOflettersCheckBoxesIsTrue = true
 let wordsObj
 let lettersCheckBoxes
 
-function showLetters(){
-	console.log(this.id)
+function textBoxChanger(){
+	let tmpWorldHolder = 0
+	if(this.checked){
+		console.log(this.id)
+		switch (this.id) {
+			case "ele1":
+					tmpWorldHolder = wordStorageEle1	
+				break;
+		
+			default:
+				break;
+		}
+
+		tmpWorldHolder = JSON.parse(tmpWorldHolder)
+		for(const[key, value] of Object.entries(tmpWorldHolder)){
+			tmpWorldHolder  = value.join("\n")
+		}
+	}
+	
+	else{
+		tmpWorldHolder = ""
+	}
+	txt.value = tmpWorldHolder
 }
 
 lettersCheckBoxes = document.getElementsByClassName("letter_checkbox")
-console.log(typeof(lettersCheckBoxes))
-// for(const key in lettersCheckBoxes){
-// 	lettersCheckBoxes[key].addEventListener('click', showLetters)
-// }
 
-for (var i = 0; i < lettersCheckBoxes.length; i++) {
+for(let i=0; i<lettersCheckBoxes.length; i++){
+	lettersCheckBoxes[i].addEventListener('click', textBoxChanger)
 }
 
 function start(){
@@ -36,7 +55,6 @@ function start(){
 	let j = 0
 	let index = 0
 	let innerIndex = 0
-	let txt = document.getElementById('txt')
 	lettersCheckBoxes = document.getElementsByClassName("letter_checkbox")	
 	console.log(typeof(lettersCheckBoxes))
 	for(const key in lettersCheckBoxes){
