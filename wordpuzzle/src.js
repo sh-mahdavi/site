@@ -18,6 +18,10 @@ let anyOflettersCheckBoxesIsTrue = true
 let wordsObj
 let lettersCheckBoxes
 
+function createCheckBox(){
+
+}
+
 function textBoxChanger(){
 	let tmpWorldHolder = 0
 	if(this.checked){
@@ -32,9 +36,13 @@ function textBoxChanger(){
 		}
 
 		tmpWorldHolder = JSON.parse(tmpWorldHolder)
+		let tmp = ""
+		console.log("tmp world: " + tmpWorldHolder)
 		for(const[key, value] of Object.entries(tmpWorldHolder)){
-			tmpWorldHolder  = value.join("\n")
+			console.log("value is: " + value)
+			tmp += value.join("\n")
 		}
+		tmpWorldHolder = tmp
 	}
 	
 	else{
@@ -195,17 +203,11 @@ function start(){
 		}, 3000);
 	}
 
-//  && (prevLetter.charCodeAt(0) == 0x0627 && prePrevLetter.charCodeAt(0) == 0x0020)
 function mergE(arr){
     let index = 0;
 	let lettersArray = []
 	console.log(charsMap[7])
 	arr.forEach(element=>{
-			// if(index>=2){
-			// console.info("charCodeAt : elment " + charsMap[38].includes(element.charCodeAt(0)) + element + " charCode is: " + element.charCodeAt(0) + "charCode 38 is: " + charsMap[38] + "charCode 37 is: " + charsMap[37])
-			// console.log("arr[index]" + arr[index])
-			// console.log("arr[index - 1] " + arr[index - 1] + "charcode is: " + arr[index - 1].charCodeAt(0) + " " + "alef is : " + charsMap[6] + " " +charsMap[6].includes(arr[index - 1].charCodeAt(0)))
-			// }
 		if( index >= 3 && (charsMap[37].includes(element.charCodeAt(0)) || charsMap[38].includes(element.charCodeAt(0)))
 			&& (charsMap[6].includes(arr[index - 1].charCodeAt(0)) && arr[index - 2].charCodeAt(0) == 0x0020)
 		 ) {
@@ -410,11 +412,32 @@ let wordStorageEle1 = `{
     "معصومه",
     "فصل",
     "مخصوص"
+  ],
+  "ذ":[
+	  "ذرّت",
+	  "ذرّه بین",
+	  "غذا",
+	  "اذان",
+	  "آذر",
+	  "اذّیت",
+	  "لذّت",
+	  "دلپذیر",
+	  "گذاشت",
+	  "گذشته",
+	  "گذاشتم",
+	  "می گذشت",
+	  "می گذارد"
   ]
-}`
+ }`
 
 let wordStorageEle2
 let wordStorageEle3
 let wordStorageEle4
 
+//  "ع":[
+// 	  "علی",
+// 	  "عید",
+// 	  "دعا",
+// 	  "عزیز",
+//   ]
 
